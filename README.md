@@ -76,6 +76,10 @@ article.human_attribute_text(:category)
 # => "技術"
 ```
 
+## Rubygems
+
+https://rubygems.org/gems/enum_translate
+
 ## Contribute
 
 PullRequests are welcome!

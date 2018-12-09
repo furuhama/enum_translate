@@ -1,4 +1,4 @@
-# EnumTranslate
+# EnumTranslate [![Build Status](https://travis-ci.org/furuhama/enum_translate.svg?branch=master)](https://travis-ci.org/furuhama/enum_translate)
 
 EnumTranslate is a gem to translate ActiveRecord::Enum defined attributes with i18n system.
 

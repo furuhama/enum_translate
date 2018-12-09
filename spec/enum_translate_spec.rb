@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe EnumTranslate do
   class Article < ActiveRecord::Base
     include EnumTranslate

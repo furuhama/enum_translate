@@ -1,4 +1,4 @@
-# EnumTranslate
+# EnumTranslate [![Build Status](https://travis-ci.org/furuhama/enum_translate.svg?branch=master)](https://travis-ci.org/furuhama/enum_translate)
 
 EnumTranslate is a gem to translate ActiveRecord::Enum defined attributes with i18n system.
 
@@ -75,6 +75,10 @@ article.category
 article.human_attribute_text(:category)
 # => "技術"
 ```
+
+## Rubygems
+
+https://rubygems.org/gems/enum_translate
 
 ## Contribute
 

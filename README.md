@@ -18,7 +18,7 @@ If you have an ActiveRecord model like this
 
 ```ruby
 class Article < ActiveRecord::Base
-  enum catgory: { finance: 0, lifehack: 1, technology: 2 }
+  enum category: { finance: 0, lifehack: 1, technology: 2 }
 end
 ```
 
@@ -28,7 +28,7 @@ include `EnumTranslate` module as a concern
 class Article < ActiveRecord::Base
   include EnumTranslate
 
-  enum catgory: { finance: 0, lifehack: 1, technology: 2 }
+  enum category: { finance: 0, lifehack: 1, technology: 2 }
 end
 ```
 

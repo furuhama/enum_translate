@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      article/category:
+        finance: 経済
+        lifehack: 生活豆知識
+        technology: 技術

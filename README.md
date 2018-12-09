@@ -1,8 +1,6 @@
 # EnumTranslate
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/enum_translate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+EnumTranslate is a gem to translate ActiveRecord::Enum defined attributes with i18n system.
 
 ## Installation
 
@@ -12,32 +10,76 @@ Add this line to your application's Gemfile:
 gem 'enum_translate'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install enum_translate
-
 ## Usage
 
-TODO: Write usage instructions here
+### Preparation
 
-## Development
+If you have an ActiveRecord model like this
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+class Article < ActiveRecord::Base
+  enum catgory: { finance: 0, lifehack: 1, technology: 2 }
+end
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+include `EnumTranslate` module as a concern
 
-## Contributing
+```ruby
+class Article < ActiveRecord::Base
+  include EnumTranslate
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/enum_translate. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+  enum catgory: { finance: 0, lifehack: 1, technology: 2 }
+end
+```
+
+And if you set `i18n` locale as `ja`
+
+```ruby
+I18n.locale = :ja
+```
+
+Please make a locale file like this
+
+```yaml
+ja:
+  activerecord:
+    attributes:
+      article/category:
+        finance: 経済
+        lifehack: 生活豆知識
+        technology: 技術
+```
+
+### APIs
+
+#### Class Method
+
+`.human_attribute_options(:attribute_name)`
+
+```ruby
+Article.human_attribute_options(:category)
+# => [["経済", "finance"],
+#     ["生活豆知識", "lifehack"],
+#     ["技術", "technology"]]
+```
+
+#### Instance Method
+
+`#human_attribute_text(:attribute_name)`
+
+```ruby
+article = Article.last
+article.category
+# => "technology"
+
+article.human_attribute_text(:category)
+# => "技術"
+```
+
+## Contribute
+
+PullRequests are welcome!
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the EnumTranslate project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/enum_translate/blob/master/CODE_OF_CONDUCT.md).

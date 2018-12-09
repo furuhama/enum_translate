@@ -1,5 +1,12 @@
-require "bundler/setup"
+require 'rspec'
+require 'pry-byebug'
+
+require 'active_record'
+require 'active_support'
+
 require "enum_translate"
+
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

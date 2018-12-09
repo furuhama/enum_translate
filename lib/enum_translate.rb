@@ -1,6 +1,5 @@
-require "enum_translate/version"
+# frozen_string_literal: true
 
-module EnumTranslate
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require 'enum_translate/version'
+require 'enum_translate/errors'
+require 'enum_translate/enum_translate_concern'
